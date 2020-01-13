@@ -11,7 +11,7 @@ https://github.com/projecthorus/radiosonde_auto_rx/wiki
 
 https://www.rtl-sdr.com/buy-rtl-sdr-dvb-t-dongles/
 
-USB should recognized and available in linux:
+USB device should recognized and available in linux (container will fail to run if device is not found):
 
 ```
 [me@i7 ~]$ dmesg
@@ -44,7 +44,7 @@ Bus 003 Device 014: ID 0bda:2838 Realtek Semiconductor Corp. RTL2838 DVB-T
 
 Running the container in privileged mode to allow the container access to SDR USB module.
 
-Exposing port 5000 allows access to the building webservice at http://localhost:5000
+Exposing port 5000 allows access to the build-in webservice at http://localhost:5000
 
 ```
 [me@i7 ~]$ docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb -p 5000:5000 pmta/radiosonde
@@ -99,7 +99,7 @@ Status: Downloaded newer image for pmta/radiosonde:latest
 
 # WebUI
 
-When new sonde has been detected and decoding was succesfull it can be sen on webui
+When new sonde has been detected and decoding was successful it can be seen on webui
 
 ![alt text](https://raw.githubusercontent.com/pmta/radiosonde/master/images/webui_sonde_found.png)
 
