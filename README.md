@@ -46,35 +46,60 @@ Running the container in privileged mode to allow the container access to SDR US
 
 Exposing port 5000 allows access to the building webservice at http://localhost:5000
 
-
 ```
 [me@i7 ~]$ docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb -p 5000:5000 pmta/radiosonde
 Unable to find image 'pmta/radiosonde:latest' locally
 latest: Pulling from pmta/radiosonde
 2746a4a261c9: Pull complete 
-:
-80dba13ee92d: Pull complete 
-Digest: sha256:b5c42358e6c38bbcdebb39240e5ab129ec0c940fc34f0a9c9c23f1fcf0808c0a
+4c1d20cdee96: Pull complete 
+0d3160e1d0de: Pull complete 
+c8e37668deea: Pull complete 
+70a286f60403: Pull complete 
+f7d43e5627bd: Pull complete 
+9b4319c64244: Pull complete 
+11208b0ba384: Pull complete 
+38c2941ec186: Pull complete 
+868454f1c30a: Pull complete 
+357c4ae0142c: Pull complete 
+5ff70816a7b5: Pull complete 
+Digest: sha256:69c6e05b082c0437d44e272aa26987b473004aee632377176d527e5dee9121d0
 Status: Downloaded newer image for pmta/radiosonde:latest
-2020-01-13 17:58:19,631 INFO:Reading configuration file...
-2020-01-13 17:58:19,632 ERROR:Config - Invalid or missing email settings. Disabling.
-2020-01-13 17:58:19,632 WARNING:Config - Did not find web control / ngp_tweak / gpsd options, using defaults (disabled)
- 2020-01-13 17:58:27,844 INFO:Config - Tested SDR #0 OK
-2020-01-13 17:58:27,847 INFO:Started Flask server on http://0.0.0.0:5000
-2020-01-13 17:58:27,849 INFO:Telemetry Logger - Started Telemetry Logger Thread.
+2020-01-13 18:17:12,564 INFO:Reading configuration file...
+2020-01-13 18:17:12,565 ERROR:Config - Invalid or missing email settings. Disabling.
+2020-01-13 18:17:12,565 WARNING:Config - Did not find web control / ngp_tweak / gpsd options, using defaults (disabled)
+2020-01-13 18:17:20,528 INFO:Config - Tested SDR #0 OK
+2020-01-13 18:17:20,532 INFO:Started Flask server on http://0.0.0.0:5000
+2020-01-13 18:17:20,533 INFO:Telemetry Logger - Started Telemetry Logger Thread.
  * Serving Flask app "autorx.web" (lazy loading)
  * Environment: production
    WARNING: This is a development server. Do not use it in a production deployment.
-2020-01-13 17:58:27,850 INFO:OziMux - Started OziMux / Payload Summary Exporter
+2020-01-13 18:17:20,534 INFO:OziMux - Started OziMux / Payload Summary Exporter
    Use a production WSGI server instead.
  * Debug mode: off
-2020-01-13 17:58:28,092 INFO:Version - Local Version: 1.2.3  Current Master Version: 1.2.3
-2020-01-13 17:58:28,093 INFO:SDR #0 has been allocated to Scanner.
-2020-01-13 17:58:36,097 INFO:Scanner #0 - Starting Scanner Thread
-2020-01-13 17:58:36,098 INFO:Scanner #0 - Running frequency scan.
-2020-01-13 17:58:56,185 INFO:Scanner #0 - Detected peaks on 11 frequencies (MHz): [ 403.    404.95  402.18  403.2   402.35  405.46  405.51  405.    401.76
-  404.38  400.87]
+2020-01-13 18:17:20,790 INFO:Version - Local Version: 1.2.3  Current Master Version: 1.2.3
+2020-01-13 18:17:20,791 INFO:SDR #0 has been allocated to Scanner.
+2020-01-13 18:17:29,042 INFO:Scanner #0 - Starting Scanner Thread
+2020-01-13 18:17:29,043 INFO:Scanner #0 - Running frequency scan.
+2020-01-13 18:17:29,898 INFO:Flask - New Web Client connected!
+:
+:
+2020-01-13 18:23:16,557 INFO:Scanner #0 - Running frequency scan.
+2020-01-13 18:23:37,207 INFO:Scanner #0 - Detected peaks on 11 frequencies (MHz): [ 403.    405.46  402.18  403.    400.87  405.    403.2   400.69  401.04
+  401.76  401.29]
+2020-01-13 18:23:39,380 INFO:Task Manager - Detected new RS41 sonde on 403.000 MHz!
+2020-01-13 18:23:39,381 INFO:Halting Scanner to decode detected radiosonde.
+2020-01-13 18:23:39,382 INFO:Scanner #0 - Waiting for current scan to finish...
+2020-01-13 18:23:55,422 INFO:Scanner #0 - Scanner Thread Closed.
+2020-01-13 18:23:55,422 INFO:SDR #0 has been allocated to Decoder (RS41, 403.000 MHz).
+2020-01-13 18:24:03,258 INFO:Decoder #0 RS41 403.000 - Using experimental decoder chain.
+2020-01-13 18:24:03,272 INFO:Decoder #0 RS41 403.000 - Starting decoder subprocess.
+2020-01-13 18:24:06,487 INFO:Telemetry Logger - Opening new log file: /radiosonde_auto_rx/auto_rx/log/20200113-182406_R1940199_RS41_403000_sonde.log
 :
 ```
 
+# WebUI
+
+When new sonde has been detected and decoding was succesfull it can be sen on webui
+
+![alt text](https://raw.githubusercontent.com/pmta/radiosonde/master/images/webui_sonde_found.png)
 
