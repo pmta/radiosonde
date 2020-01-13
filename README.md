@@ -1,5 +1,6 @@
 # Radiosonde autorx
 
+https://www.youtube.com/watch?v=YBy-bXEWZeM
 
 https://github.com/projecthorus/radiosonde_auto_rx
 
