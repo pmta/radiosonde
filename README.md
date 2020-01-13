@@ -42,12 +42,24 @@ Bus 003 Device 014: ID 0bda:2838 Realtek Semiconductor Corp. RTL2838 DVB-T
 
 # Running the container
 
-Running the container in privileged mode to allow the container access to SDR USB module.
 
-Exposing port 5000 allows access to the build-in webservice at http://localhost:5000
+About the options below:
+
+--privileged -v /dev/bus/usb:/dev/bus/usb
+  Running the container in privileged mode to allow the container access to SDR USB module.
+
+-v $(pwd)/log:/radiosonde_auto_rx/auto_rx/log/
+  Bind mount folder "log" from host to container so container can write logs to host. Optional, if not given 
+  logs are kept inside container and are lost when container is destroyed.
+
+-p 5000:5000
+  Exposing port 5000 allows access to the webservice running in the container from host by connecting to http://localhost:5000 on host
+
+
 
 ```
-[me@i7 ~]$ docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb -p 5000:5000 pmta/radiosonde
+[me@i7 ~]$ mkdir log
+[me@i7 ~]$ docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb -v $(pwd)/log:/radiosonde_auto_rx/auto_rx/log/ -p 5000:5000 pmta/radiosonde
 Unable to find image 'pmta/radiosonde:latest' locally
 latest: Pulling from pmta/radiosonde
 2746a4a261c9: Pull complete 
