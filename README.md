@@ -1,5 +1,8 @@
 # Radiosonde autorx
 
+Version for Arm based builds to be used on Raspberry Pi and Raspian
+
+
 https://www.youtube.com/watch?v=YBy-bXEWZeM
 
 https://github.com/projecthorus/radiosonde_auto_rx
